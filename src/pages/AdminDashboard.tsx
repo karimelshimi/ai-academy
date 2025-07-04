@@ -10,8 +10,6 @@ import {
   Plus,
   Edit,
   Trash2,
-  Eye,
-  Star,
   Clock
 } from 'lucide-react';
 import toast from 'react-hot-toast';

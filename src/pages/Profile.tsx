@@ -3,10 +3,9 @@ import { motion } from 'framer-motion';
 import { useAuth } from '../contexts/AuthContext';
 import { useCourse } from '../contexts/CourseContext';
 import { User, Mail, Calendar, Award, BookOpen, Clock, Star } from 'lucide-react';
-import toast from 'react-hot-toast';
 
 const Profile: React.FC = () => {
-  const { user, profile, updateProfile } = useAuth();
+  const { profile, updateProfile } = useAuth();
   const { enrolledCourses } = useCourse();
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({
@@ -24,8 +23,8 @@ const Profile: React.FC = () => {
     }
   };
 
-  const completedCourses = enrolledCourses.filter(course => course.progress >= 100);
-  const inProgressCourses = enrolledCourses.filter(course => course.progress > 0 && course.progress < 100);
+  const completedCourses = enrolledCourses.filter(course => (course.progress || 0) >= 100);
+  const inProgressCourses = enrolledCourses.filter(course => (course.progress || 0) > 0 && (course.progress || 0) < 100);
   const totalHours = enrolledCourses.reduce((sum, course) => sum + course.duration_hours, 0);
   const averageProgress = enrolledCourses.length > 0 
     ? enrolledCourses.reduce((sum, course) => sum + (course.progress || 0), 0) / enrolledCourses.length 
@@ -222,13 +221,13 @@ const Profile: React.FC = () => {
                           <p className="text-sm text-slate-400">{course.category}</p>
                         </div>
                         <span className="text-sm font-medium text-indigo-400">
-                          {course.progress}%
+                          {course.progress || 0}%
                         </span>
                       </div>
                       <div className="w-full bg-slate-700 rounded-full h-2">
                         <div
                           className="bg-gradient-to-r from-indigo-500 to-purple-500 h-2 rounded-full transition-all duration-300"
-                          style={{ width: `${course.progress}%` }}
+                          style={{ width: `${course.progress || 0}%` }}
                         ></div>
                       </div>
                     </div>

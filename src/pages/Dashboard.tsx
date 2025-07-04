@@ -18,7 +18,7 @@ const Dashboard: React.FC = () => {
   useEffect(() => {
     if (enrolledCourses.length > 0) {
       const totalCourses = enrolledCourses.length;
-      const completedCourses = enrolledCourses.filter(course => course.progress >= 100).length;
+      const completedCourses = enrolledCourses.filter(course => (course.progress || 0) >= 100).length;
       const totalHours = enrolledCourses.reduce((sum, course) => sum + course.duration_hours, 0);
       const averageProgress = enrolledCourses.reduce((sum, course) => sum + (course.progress || 0), 0) / totalCourses;
 

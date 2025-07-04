@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Check, Star, Users, MessageCircle } from 'lucide-react';
+import { Check, Star, Users } from 'lucide-react';
 
 const Pricing: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
@@ -61,7 +61,10 @@ const Pricing: React.FC = () => {
   };
 
   const renderPaymentDetails = () => {
-    const method = paymentMethods[selectedCountry as keyof typeof paymentMethods]?.[selectedPayment as keyof typeof paymentMethods.egypt];
+    const countryMethods = paymentMethods[selectedCountry as keyof typeof paymentMethods];
+    if (!countryMethods) return null;
+    
+    const method = countryMethods[selectedPayment as keyof typeof countryMethods];
     if (!method) return null;
 
     return (
@@ -71,13 +74,13 @@ const Pricing: React.FC = () => {
           من فضلك قم بتحويل مبلغ <span className="font-bold">{method.amount}</span>
         </p>
         
-        {selectedPayment === 'mobile-wallet' && (
+        {selectedPayment === 'mobile-wallet' && 'number' in method && 'wallets' in method && (
           <div className="space-y-4">
             <div className="bg-slate-900 p-4 rounded-lg">
               <p className="text-2xl font-mono text-white">{method.number}</p>
             </div>
             <div className="flex flex-wrap justify-center gap-2">
-              {method.wallets?.map((wallet, index) => (
+              {method.wallets.map((wallet: string, index: number) => (
                 <span key={index} className="bg-slate-700 px-3 py-1 rounded-full text-sm">
                   {wallet}
                 </span>
@@ -86,13 +89,13 @@ const Pricing: React.FC = () => {
           </div>
         )}
 
-        {selectedPayment === 'instapay' && (
+        {selectedPayment === 'instapay' && 'account' in method && (
           <div className="bg-slate-900 p-4 rounded-lg">
             <p className="text-xl font-mono text-white">{method.account}</p>
           </div>
         )}
 
-        {selectedPayment === 'bank-transfer' && method.details && (
+        {selectedPayment === 'bank-transfer' && 'details' in method && method.details && (
           <div className="bg-slate-900 p-6 rounded-lg text-right space-y-2">
             <p><span className="text-slate-400">Name:</span> <span className="text-white">{method.details.name}</span></p>
             <p><span className="text-slate-400">Bank:</span> <span className="text-white">{method.details.bank}</span></p>
@@ -101,7 +104,7 @@ const Pricing: React.FC = () => {
           </div>
         )}
 
-        {selectedPayment === 'payeer' && (
+        {selectedPayment === 'payeer' && 'account' in method && (
           <div className="bg-slate-900 p-4 rounded-lg">
             <p className="text-xl font-mono text-white">{method.account}</p>
           </div>

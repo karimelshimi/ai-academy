@@ -9,11 +9,8 @@ import {
   Users, 
   Star, 
   BookOpen, 
-  Award, 
   CheckCircle,
-  Lock,
-  MessageCircle,
-  User
+  Lock
 } from 'lucide-react';
 import toast from 'react-hot-toast';
 

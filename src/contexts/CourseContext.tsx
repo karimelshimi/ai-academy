@@ -24,6 +24,7 @@ interface Course {
   lessons_count?: number;
   enrolled_count?: number;
   average_rating?: number;
+  progress?: number;
 }
 
 interface Lesson {

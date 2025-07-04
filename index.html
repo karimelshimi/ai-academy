@@ -1,0 +1,444 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أكاديمية حسام للذكاء الاصطناعي</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts (Cairo) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+        /* Custom styles */
+        body {
+            font-family: 'Cairo', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #0f172a; /* slate-900 */
+            color: #e2e8f0; /* slate-200 */
+        }
+
+        .hero-gradient-text {
+            background: linear-gradient(to right, #6366f1, #a855f7, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+        
+        .glass-effect {
+            background: rgba(30, 41, 59, 0.5); /* slate-800 with opacity */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        header {
+            background: rgba(15, 23, 42, 0.5); /* slate-900 with opacity */
+        }
+
+        /* Scroll animations */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .scroll-animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Animated background for social section */
+        @keyframes move {
+            100% { transform: translate3d(0, 0, 1px) rotate(360deg); }
+        }
+
+        .animated-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .animated-bg span {
+            width: 20vmin;
+            height: 20vmin;
+            border-radius: 20vmin;
+            backface-visibility: hidden;
+            position: absolute;
+            animation: move;
+            animation-duration: 45s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+
+        .animated-bg span:nth-child(1) { color: #ec4899; top: 7%; left: 91%; animation-duration: 50s; animation-delay: -2s; transform-origin: -11vw 24vh; box-shadow: 40vmin 0 5.01vmin currentColor; }
+        .animated-bg span:nth-child(2) { color: #a855f7; top: 18%; left: 32%; animation-duration: 30s; animation-delay: -10s; transform-origin: -14vw -12vh; box-shadow: -40vmin 0 5.2vmin currentColor; }
+        .animated-bg span:nth-child(3) { color: #6366f1; top: 88%; left: 83%; animation-duration: 40s; animation-delay: -15s; transform-origin: 2vw -2vh; box-shadow: -40vmin 0 5.5vmin currentColor; }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-200">
+
+    <!-- Header & Navbar -->
+    <header class="sticky top-0 z-40 glass-effect">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-black">
+                أكاديمية<span class="text-indigo-400"> حسام</span>
+            </a>
+            <div class="hidden md:flex space-x-8 space-x-reverse items-center">
+                <a href="#features" class="hover:text-indigo-400 transition-colors duration-300">ماذا ستتعلم؟</a>
+                <a href="#packages" class="hover:text-indigo-400 transition-colors duration-300">الباقات</a>
+                <a href="#testimonials" class="hover:text-indigo-400 transition-colors duration-300">آراء العملاء</a>
+                <a href="#contact" class="hover:text-indigo-400 transition-colors duration-300">تواصل معنا</a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden text-2xl">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pt-2 pb-4 space-y-2 glass-effect border-t border-slate-800">
+            <a href="#features" class="block py-2 hover:text-indigo-400 transition-colors duration-300">ماذا ستتعلم؟</a>
+            <a href="#packages" class="block py-2 hover:text-indigo-400 transition-colors duration-300">الباقات</a>
+            <a href="#testimonials" class="block py-2 hover:text-indigo-400 transition-colors duration-300">آراء العملاء</a>
+            <a href="#contact" class="block py-2 hover:text-indigo-400 transition-colors duration-300">تواصل معنا</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="min-h-screen flex items-center justify-center text-center bg-cover bg-center" style="background-image: url('https://placehold.co/1920x1080/0f172a/ec4899?text=AI');">
+             <div class="bg-slate-900 bg-opacity-80 p-8 rounded-2xl">
+                <h1 class="text-4xl md:text-7xl font-extrabold leading-tight md:leading-relaxed mb-4 scroll-animate">
+                    <span class="hero-gradient-text">جاهز تبقى فنان في الذكاء الاصطناعي؟</span>
+                </h1>
+                <p class="text-lg md:text-xl max-w-3xl mx-auto text-slate-300 mb-8 scroll-animate" style="transition-delay: 150ms;">
+                    هنا هتتعلم كل أدوات الذكاء الاصطناعي الجديدة، وتعرف إزاي تكسب منها وتعمل بيها حاجات مبتكرة محدش عملها قبلك.
+                </p>
+                <div class="flex justify-center gap-4 scroll-animate" style="transition-delay: 300ms;">
+                    <a href="#packages" class="bg-indigo-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-indigo-700 transition-all duration-300 transform hover:scale-105">
+                        اشترك الآن
+                    </a>
+                    <a href="#features" class="bg-transparent border border-slate-400 text-slate-200 font-bold py-3 px-8 rounded-lg hover:bg-slate-700 transition-all duration-300 transform hover:scale-105">
+                        اعرف أكتر
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="pt-8 pb-20 md:py-20">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 scroll-animate">ماذا ستتعلم وتكسب معنا؟</h2>
+                <p class="max-w-2xl mx-auto text-slate-400 mb-12 scroll-animate">محتوى حصري ومحدث باستمرار يفتح لك أبواب الإبداع والربح.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="glass-effect p-8 rounded-xl text-center hover:border-indigo-500 transition-all duration-300 scroll-animate">
+                        <div class="bg-indigo-500/20 text-indigo-400 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6"><i class="fas fa-laptop-code text-3xl"></i></div>
+                        <h3 class="text-2xl font-bold mb-3">أحدث أدوات AI</h3>
+                        <p class="text-slate-400">شروحات عملية لأقوى الأدوات في تصميم الصور، الفيديو، الصوت، والكتابة الإبداعية.</p>
+                    </div>
+                    <div class="glass-effect p-8 rounded-xl text-center hover:border-pink-500 transition-all duration-300 scroll-animate" style="transition-delay: 150ms;">
+                         <div class="bg-pink-500/20 text-pink-400 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6"><i class="fas fa-dollar-sign text-3xl"></i></div>
+                        <h3 class="text-2xl font-bold mb-3">استراتيجيات الربح</h3>
+                        <p class="text-slate-400">طرق حقيقية ومجربة لتحويل مهاراتك في الذكاء الاصطناعي إلى مصدر دخل ثابت.</p>
+                    </div>
+                    <div class="glass-effect p-8 rounded-xl text-center hover:border-purple-500 transition-all duration-300 scroll-animate" style="transition-delay: 300ms;">
+                         <div class="bg-purple-500/20 text-purple-400 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6"><i class="fas fa-lightbulb text-3xl"></i></div>
+                        <h3 class="text-2xl font-bold mb-3">مشاريع مبتكرة</h3>
+                        <p class="text-slate-400">تعلم كيف تبني مشاريع كاملة وغير مسبوقة باستخدام مجموعة من أدوات الذكاء الاصطناعي.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Animated Counter Section -->
+        <section id="counter" class="py-20 bg-slate-800/50">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                    <div class="scroll-animate">
+                        <i class="fas fa-users text-4xl text-cyan-400 mb-3"></i>
+                        <h3 class="text-5xl font-bold" data-target="100">0</h3>
+                        <p class="text-slate-400 mt-2">عميل راضٍ</p>
+                    </div>
+                    <div class="scroll-animate" style="transition-delay: 150ms;">
+                        <i class="fas fa-video text-4xl text-pink-400 mb-3"></i>
+                        <h3 class="text-5xl font-bold" data-target="80">0</h3>
+                        <p class="text-slate-400 mt-2">فيديو تعليمي</p>
+                    </div>
+                    <div class="scroll-animate" style="transition-delay: 300ms;">
+                        <i class="fab fa-telegram text-4xl text-indigo-400 mb-3"></i>
+                        <h3 class="text-5xl font-bold" data-target="1500">0</h3>
+                        <p class="text-slate-400 mt-2">عضو في المجتمع</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Packages Section -->
+        <section id="packages" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 scroll-animate">اختر الباقة المناسبة لك</h2>
+                    <p class="max-w-2xl mx-auto text-slate-400 scroll-animate">انضم لمجتمعنا وابدأ رحلتك في عالم الذكاء الاصطناعي اليوم.</p>
+                </div>
+                <div class="flex flex-col md:flex-row justify-center items-stretch gap-8">
+                    <!-- Free Package -->
+                    <div class="w-full md:w-1/3 glass-effect p-8 rounded-xl flex flex-col scroll-animate">
+                        <h3 class="text-2xl font-bold text-center text-cyan-400">العضوية المجانية</h3>
+                        <p class="text-center text-slate-400 mt-2 mb-6">انضم لمجتمعنا على تليجرام</p>
+                        <ul class="space-y-4 flex-grow">
+                            <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-400"></i> نقاشات عامة ومصادر مفيدة</li>
+                             <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-400"></i> إعلانات عن الكورسات الجديدة</li>
+                        </ul>
+                        <a href="https://t.me/+WrGesCy1dh83MGU0" target="_blank" class="mt-8 text-center w-full bg-cyan-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-cyan-700 transition-all duration-300">انضم مجاناً</a>
+                    </div>
+
+                    <!-- Pro Package -->
+                    <div class="w-full md:w-1/3 bg-indigo-900/50 p-8 rounded-xl border-2 border-indigo-500 flex flex-col relative overflow-hidden scroll-animate" style="transition-delay: 150ms;">
+                        <div class="absolute top-0 right-0 bg-indigo-500 text-white text-sm font-bold px-4 py-1 rounded-bl-lg">الأكثر شيوعاً</div>
+                        <h3 class="text-2xl font-bold text-center text-indigo-400">العضوية الإحترافية (Pro)</h3>
+                        <p class="text-center text-5xl font-bold my-6">$50 <span class="text-lg font-normal text-slate-400">/ مرة واحدة فقط</span></p>
+                        <ul class="space-y-4 flex-grow">
+                            <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-400"></i> وصول كامل لكل الفيديوهات</li>
+                            <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-400"></i> تحديثات مستمرة ومحتوى حصري</li>
+                            <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-400"></i> جروب تليجرام خاص بالأعضاء (VIP)</li>
+                             <li class="flex items-center gap-3"><i class="fas fa-check-circle text-green-400"></i> دعم مباشر للإجابة على أسئلتك</li>
+                        </ul>
+                        <button id="openModalBtn" class="mt-8 text-center w-full bg-indigo-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-indigo-700 transition-all duration-300 transform hover:scale-105">اشترك الآن</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="py-20 bg-slate-800/50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 scroll-animate">آراء عملائنا</h2>
+                    <p class="max-w-2xl mx-auto text-slate-400 scroll-animate">نفخر بثقة مجتمعنا، وهذه بعض من شهاداتهم.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Testimonial 1 -->
+                    <div class="glass-effect p-6 rounded-xl scroll-animate">
+                        <div class="flex items-center mb-4">
+                            <img src="https://placehold.co/50x50/a855f7/ffffff?text=M" alt="Mohamed" class="w-12 h-12 rounded-full mr-4">
+                            <div>
+                                <h4 class="font-bold">محمد علي</h4>
+                                <div class="text-yellow-400"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            </div>
+                        </div>
+                        <p class="text-slate-400">"بصراحة الكورس غير تفكيري تمامًا، الشرح بسيط ومباشر ومفيش أي تعقيد. بقيت بعمل تصميمات بالذكاء الاصطناعي محدش مصدق إني اللي عاملها."</p>
+                    </div>
+                    <!-- Testimonial 2 -->
+                    <div class="glass-effect p-6 rounded-xl scroll-animate" style="transition-delay: 150ms;">
+                        <div class="flex items-center mb-4">
+                            <img src="https://placehold.co/50x50/ec4899/ffffff?text=F" alt="Fatma" class="w-12 h-12 rounded-full mr-4">
+                            <div>
+                                <h4 class="font-bold">فاطمة السيد</h4>
+                                <div class="text-yellow-400"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            </div>
+                        </div>
+                        <p class="text-slate-400">"المحتوى بيتحدث باستمرار ودي أهم حاجة في مجال الذكاء الاصطناعي. كل يوم في أداة جديدة بنتعلمها، والدعم في جروب الـ VIP ممتاز جدًا."</p>
+                    </div>
+                    <!-- Testimonial 3 -->
+                    <div class="glass-effect p-6 rounded-xl scroll-animate" style="transition-delay: 300ms;">
+                        <div class="flex items-center mb-4">
+                            <img src="https://placehold.co/50x50/6366f1/ffffff?text=A" alt="Ahmed" class="w-12 h-12 rounded-full mr-4">
+                            <div>
+                                <h4 class="font-bold">أحمد خالد</h4>
+                                <div class="text-yellow-400"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                            </div>
+                        </div>
+                        <p class="text-slate-400">"أحسن استثمار عملته في نفسي. قدرت أستخدم اللي اتعلمته في شغلي كمسوق والنتائج كانت مبهرة. شكرًا يا حسام على المجهود ده."</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20">
+            <div class="container mx-auto px-6 text-center">
+                 <h2 class="text-3xl md:text-4xl font-bold mb-4 scroll-animate">تواصل معنا</h2>
+                 <p class="max-w-2xl mx-auto text-slate-400 mb-12 scroll-animate">لديك سؤال؟ لا تتردد في التواصل معنا مباشرة.</p>
+                 <div class="flex flex-col md:flex-row justify-center gap-8 md:gap-16">
+                    <div class="scroll-animate">
+                        <div class="bg-indigo-500/20 text-indigo-400 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"><i class="fas fa-phone-alt text-2xl"></i></div>
+                        <h3 class="text-xl font-bold">الهاتف</h3>
+                        <a href="tel:+010000000" class="text-slate-400 hover:text-indigo-400 transition-colors">+010000000</a>
+                    </div>
+                    <div class="scroll-animate" style="transition-delay: 150ms;">
+                        <div class="bg-pink-500/20 text-pink-400 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"><i class="fas fa-envelope text-2xl"></i></div>
+                        <h3 class="text-xl font-bold">البريد الإلكتروني</h3>
+                        <a href="/cdn-cgi/l/email-protection#6c04031f1f0d012c070707420f0301" class="text-slate-400 hover:text-pink-400 transition-colors"><span class="__cf_email__" data-cfemail="50383f2323313d103b3b3b7e333f3d">[email&#160;protected]</span></a>
+                    </div>
+                 </div>
+            </div>
+        </section>
+
+        <!-- Social Media Section -->
+        <section id="social" class="py-20 bg-slate-800/50 relative overflow-hidden">
+             <div class="animated-bg"><span></span><span></span><span></span></div>
+             <div class="container mx-auto px-6 text-center relative">
+                 <h2 class="text-3xl md:text-4xl font-bold mb-4 scroll-animate text-white">تابعنا على السوشيال ميديا</h2>
+                 <p class="max-w-2xl mx-auto text-slate-300 mb-12 scroll-animate">كن على إطلاع دائم بآخر أخبارنا وشروحاتنا المجانية.</p>
+                 <div class="flex justify-center items-center flex-wrap gap-6">
+                    <a href="https://www.facebook.com/ahmed4hossam" target="_blank" class="text-4xl text-slate-300 hover:text-blue-500 transition-all transform hover:scale-125 scroll-animate" style="transition-delay: 50ms;"><i class="fab fa-facebook"></i></a>
+                    <a href="https://wa.me/+010000000" target="_blank" class="text-4xl text-slate-300 hover:text-green-500 transition-all transform hover:scale-125 scroll-animate" style="transition-delay: 100ms;"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" target="_blank" class="text-4xl text-slate-300 hover:text-red-500 transition-all transform hover:scale-125 scroll-animate" style="transition-delay: 150ms;"><i class="fab fa-youtube"></i></a>
+                    <a href="#" target="_blank" class="text-4xl text-slate-300 hover:text-white transition-all transform hover:scale-125 scroll-animate" style="transition-delay: 200ms;"><i class="fab fa-tiktok"></i></a>
+                    <a href="#" target="_blank" class="text-4xl text-slate-300 hover:text-pink-500 transition-all transform hover:scale-125 scroll-animate" style="transition-delay: 250ms;"><i class="fab fa-instagram"></i></a>
+                    <a href="#" target="_blank" class="text-4xl text-slate-300 hover:text-blue-400 transition-all transform hover:scale-125 scroll-animate" style="transition-delay: 300ms;"><i class="fab fa-linkedin"></i></a>
+                 </div>
+             </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 py-6">
+        <div class="container mx-auto px-6 text-center text-slate-500">
+            <p>&copy; 2025 أكاديمية حسام للذكاء الاصطناعي. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <!-- Subscription Modal -->
+    <div id="subscriptionModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70 backdrop-blur-sm hidden">
+        <div id="modalContent" class="bg-slate-800 rounded-2xl shadow-2xl w-full max-w-lg m-4 p-8 relative transform transition-all duration-300 scale-95 opacity-0">
+            <button id="closeModalBtn" class="absolute top-4 left-4 text-slate-400 hover:text-white"><i class="fas fa-times text-xl"></i></button>
+            <button id="backBtn" class="absolute top-4 right-4 text-slate-400 hover:text-white hidden"><i class="fas fa-arrow-right text-xl"></i></button>
+            <h2 id="modalTitle" class="text-2xl font-bold text-center mb-6">إتمام الاشتراك (Pro)</h2>
+            <div id="stage1">
+                <p class="text-center text-slate-400 mb-6">أولاً، اختر بلدك للمتابعة.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <button data-choice="egypt" class="stage-btn bg-slate-700 hover:bg-indigo-600 p-4 rounded-lg text-lg font-bold transition-colors">مصر</button>
+                    <button data-choice="international" class="stage-btn bg-slate-700 hover:bg-pink-600 p-4 rounded-lg text-lg font-bold transition-colors">دولي</button>
+                </div>
+            </div>
+            <div id="stage2-egypt" class="hidden">
+                 <p class="text-center text-slate-400 mb-6">اختر طريقة الدفع المفضلة داخل مصر.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <button data-choice="mobile-wallet" class="stage-btn bg-slate-700 hover:bg-slate-600 p-4 rounded-lg text-lg font-bold transition-colors">محفظة هاتف</button>
+                    <button data-choice="instapay" class="stage-btn bg-slate-700 hover:bg-slate-600 p-4 rounded-lg text-lg font-bold transition-colors">إنستاباي (Instapay)</button>
+                </div>
+            </div>
+            <div id="stage2-international" class="hidden">
+                <p class="text-center text-slate-400 mb-6">اختر طريقة الدفع المفضلة من خارج مصر.</p>
+                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <button data-choice="bank-transfer" class="stage-btn bg-slate-700 hover:bg-slate-600 p-4 rounded-lg text-lg font-bold transition-colors">تحويل بنكي</button>
+                    <button data-choice="payeer" class="stage-btn bg-slate-700 hover:bg-slate-600 p-4 rounded-lg text-lg font-bold transition-colors">Payeer</button>
+                </div>
+            </div>
+            <div id="stage3-content" class="hidden text-center"></div>
+        </div>
+    </div>
+    
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- Mobile Menu ---
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            // Close menu on link click
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+            });
+
+            // --- Scroll Animations ---
+            const scrollElements = document.querySelectorAll('.scroll-animate');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    } else {
+                        // To repeat animation on every scroll
+                         entry.target.classList.remove('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            scrollElements.forEach(el => observer.observe(el));
+
+            // --- Animated Counter ---
+            const counters = document.querySelectorAll('#counter h3');
+            let activated = false;
+            const counterObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !activated) {
+                        activated = true;
+                        counters.forEach(counter => {
+                            counter.innerText = '0';
+                            const target = +counter.getAttribute('data-target');
+                            const increment = target / 200;
+
+                            const updateCounter = () => {
+                                const c = +counter.innerText;
+                                if (c < target) {
+                                    counter.innerText = `${Math.ceil(c + increment)}`;
+                                    setTimeout(updateCounter, 10);
+                                } else {
+                                    counter.innerText = target.toLocaleString() + (target > 1000 ? '+' : '');
+                                }
+                            };
+                            updateCounter();
+                        });
+                    } else if (!entry.isIntersecting) {
+                        activated = false; // Reset when out of view
+                         counters.forEach(counter => counter.innerText = '0');
+                    }
+                });
+            }, { threshold: 0.5 });
+            const counterSection = document.getElementById('counter');
+            if(counterSection) counterObserver.observe(counterSection);
+
+
+            // --- Modal Logic ---
+            const modal = document.getElementById('subscriptionModal');
+            const modalContent = document.getElementById('modalContent');
+            const openBtn = document.getElementById('openModalBtn');
+            const closeBtn = document.getElementById('closeModalBtn');
+            const backBtn = document.getElementById('backBtn');
+            const stages = {
+                '1': document.getElementById('stage1'),
+                '2-egypt': document.getElementById('stage2-egypt'),
+                '2-international': document.getElementById('stage2-international'),
+                '3-content': document.getElementById('stage3-content')
+            };
+            let history = ['1'];
+            const paymentInstructions = {
+                'mobile-wallet': `<h3 class="text-xl font-bold text-indigo-400 mb-4">الدفع عبر المحافظ الإلكترونية</h3><p class="text-slate-300 mb-4">من فضلك قم بتحويل مبلغ <span class="font-bold">1000 جنيه مصري</span> إلى الرقم التالي:</p><div class="bg-slate-900 p-4 rounded-lg my-4"><p class="text-2xl font-mono tracking-widest text-white select-all">0100000000</p></div><div class="flex flex-wrap justify-center items-center gap-4 my-6"><div class="flex items-center gap-2 bg-slate-700 px-3 py-1 rounded-full"><img src="https://placehold.co/24x24/f44336/ffffff?text=V" class="rounded-full w-6 h-6"><span>فودافون كاش</span></div><div class="flex items-center gap-2 bg-slate-700 px-3 py-1 rounded-full"><img src="https://placehold.co/24x24/ff9800/ffffff?text=O" class="rounded-full w-6 h-6"><span>أورانج كاش</span></div><div class="flex items-center gap-2 bg-slate-700 px-3 py-1 rounded-full"><img src="https://placehold.co/24x24/4caf50/ffffff?text=E" class="rounded-full w-6 h-6"><span>اتصالات كاش</span></div></div><p class="text-slate-400">بعد التحويل، أرسل صورة من الإيصال على تليجرام لتفعيل اشتراكك.</p>`,
+                'instapay': `<h3 class="text-xl font-bold text-indigo-400 mb-4">الدفع عبر إنستاباي</h3><p class="text-slate-300 mb-4">من فضلك قم بتحويل مبلغ <span class="font-bold">1000 جنيه مصري</span> إلى الحساب التالي:</p><div class="bg-slate-900 p-4 rounded-lg my-4"><img src="https://placehold.co/80x80/ffffff/0f172a?text=InstaPay" class="mx-auto rounded-lg mb-2"><p class="text-xl font-mono tracking-widest text-white select-all">HossamAI@instapay</p></div><p class="text-slate-400">بعد التحويل، أرسل صورة من الإيصال على تليجرام لتفعيل اشتراكك.</p>`,
+                'bank-transfer': `<h3 class="text-xl font-bold text-pink-400 mb-4">الدفع عبر تحويل بنكي</h3><p class="text-slate-300 mb-4">من فضلك قم بتحويل مبلغ <span class="font-bold">$50 USD</span> إلى الحساب البنكي التالي:</p><div class="bg-slate-900 p-6 rounded-lg my-4 text-right space-y-3"><p><span class="font-bold text-slate-400">Name:</span> <span class="select-all text-white">Ahmed Ahmed Ahmed Ahmed</span></p><p><span class="font-bold text-slate-400">Bank:</span> <span class="select-all text-white">CIB</span></p><p><span class="font-bold text-slate-400">Account Number:</span> <span class="font-mono select-all text-white">1080808080808080</span></p><p><span class="font-bold text-slate-400">Swift Code:</span> <span class="font-mono select-all text-white">7070x</span></p></div><p class="text-slate-400">بعد التحويل، أرسل صورة من الإيصال على تليجرام لتفعيل اشتراكك.</p>`,
+                'payeer': `<h3 class="text-xl font-bold text-pink-400 mb-4">الدفع عبر Payeer</h3><p class="text-slate-300 mb-4">من فضلك قم بتحويل مبلغ <span class="font-bold">$50 USD</span> إلى حساب Payeer التالي:</p><div class="bg-slate-900 p-4 rounded-lg my-4"><img src="https://placehold.co/80x80/ffffff/0f172a?text=Payeer" class="mx-auto rounded-lg mb-2"><p class="text-xl font-mono tracking-widest text-white select-all">HelloMan@xxx.com</p></div><p class="text-slate-400">بعد التحويل، أرسل صورة من الإيصال على تليجرام لتفعيل اشتراكك.</p>`
+            };
+            function toggleModal(show) { if (show) { modal.classList.remove('hidden'); setTimeout(() => { modalContent.classList.remove('scale-95', 'opacity-0'); }, 50); } else { modalContent.classList.add('scale-95', 'opacity-0'); setTimeout(() => { modal.classList.add('hidden'); resetModal(); }, 300); } }
+            function goToStage(stageId) { Object.values(stages).forEach(s => s.classList.add('hidden')); if (stages[stageId]) { stages[stageId].classList.remove('hidden'); history.push(stageId); } backBtn.classList.toggle('hidden', history.length <= 1); }
+            function showPaymentDetails(method) { Object.values(stages).forEach(s => s.classList.add('hidden')); const contentDiv = stages['3-content']; contentDiv.innerHTML = paymentInstructions[method]; contentDiv.classList.remove('hidden'); history.push('3-content'); backBtn.classList.remove('hidden'); }
+            function resetModal() { history = ['1']; Object.values(stages).forEach(s => s.classList.add('hidden')); stages['1'].classList.remove('hidden'); backBtn.classList.add('hidden'); }
+            openBtn.addEventListener('click', () => toggleModal(true));
+            closeBtn.addEventListener('click', () => toggleModal(false));
+            modal.addEventListener('click', (e) => { if (e.target === modal) { toggleModal(false); } });
+            backBtn.addEventListener('click', () => { history.pop(); const previousStage = history.pop(); if (previousStage) { goToStage(previousStage); } });
+            document.querySelectorAll('.stage-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const choice = btn.dataset.choice;
+                    const currentStageId = history[history.length - 1];
+                    if (currentStageId === '1') { goToStage(`2-${choice}`); } else if (currentStageId.startsWith('2')) { showPaymentDetails(choice); }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

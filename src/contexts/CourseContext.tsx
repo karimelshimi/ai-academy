@@ -40,15 +40,6 @@ interface Lesson {
   updated_at: string;
 }
 
-interface Enrollment {
-  id: string;
-  user_id: string;
-  course_id: string;
-  enrolled_at: string;
-  progress: number;
-  completed_at: string | null;
-}
-
 interface CourseContextType {
   courses: Course[];
   enrolledCourses: Course[];

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import { Eye, EyeOff, Mail, Lock } from 'lucide-react';
+import { Eye, EyeOff, Mail, Lock, User, Shield } from 'lucide-react';
 import toast from 'react-hot-toast';
 
 const Login: React.FC = () => {
@@ -35,6 +35,16 @@ const Login: React.FC = () => {
     }
   };
 
+  const fillDemoCredentials = (type: 'admin' | 'student') => {
+    if (type === 'admin') {
+      setEmail('admin@demo.com');
+      setPassword('admin123');
+    } else {
+      setEmail('student@demo.com');
+      setPassword('student123');
+    }
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
@@ -43,6 +53,31 @@ const Login: React.FC = () => {
           <p className="mt-2 text-slate-400">
             ادخل إلى حسابك للوصول للكورسات
           </p>
+        </div>
+
+        {/* Demo Accounts */}
+        <div className="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+          <h3 className="text-lg font-bold mb-3 text-center">حسابات تجريبية</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <button
+              onClick={() => fillDemoCredentials('admin')}
+              className="flex items-center justify-center space-x-2 space-x-reverse p-3 bg-purple-600/20 border border-purple-500/30 rounded-lg hover:bg-purple-600/30 transition-colors"
+            >
+              <Shield className="w-4 h-4 text-purple-400" />
+              <span className="text-sm font-medium">مدير النظام</span>
+            </button>
+            <button
+              onClick={() => fillDemoCredentials('student')}
+              className="flex items-center justify-center space-x-2 space-x-reverse p-3 bg-indigo-600/20 border border-indigo-500/30 rounded-lg hover:bg-indigo-600/30 transition-colors"
+            >
+              <User className="w-4 h-4 text-indigo-400" />
+              <span className="text-sm font-medium">طالب</span>
+            </button>
+          </div>
+          <div className="mt-3 text-xs text-slate-400 text-center">
+            <p>مدير: admin@demo.com / admin123</p>
+            <p>طالب: student@demo.com / student123</p>
+          </div>
         </div>
         
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
